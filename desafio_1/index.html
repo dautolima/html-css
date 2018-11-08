@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body class="bgColor">
+    <div style="text-align:center">
+
+        <video id="video" width="640" height="480" autoplay>
+            <source src="video/videoTest.mp4" type="video/mp4">
+        </video>
+
+        <div class="grid-container">
+            <div>
+                <input type=image src="img/reverseIcon.png" onclick="reverseVideo()" class="btReverse">
+            </div>
+            <div>
+                <input type=image src="img/playIcon.png" onclick="playVideo()" class="btPlay" id="play">
+                <input type=image src="img/pauseIcon.png" onclick="pauseVideo()" style="display: none" class="btPause"
+                    id="pause">
+            </div>
+            <div>
+                <input type=image src="img/forwardIcon.png" onclick="forwardVideo()" class="btForward">
+            </div>
+            <div>
+                <input type=image src="img/stopIcon.png" onclick="stopVideo()" class="btStop">
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        var myVideo = document.getElementById("video");
+        var pauseButton = document.getElementById("pause");
+        var playButton = document.getElementById("play");
+
+
+        function playVideo() {
+            if (pauseButton.style.display === "none" && myVideo.pause) {
+                pauseButton.style.display = "block";
+                playButton.style.display = "none"
+                myVideo.play();
+            } else {
+                pauseButton.style.display = "none";
+                myVideo.pause();
+            }
+
+        }
+
+        function pauseVideo() {
+                playButton.style.display = "block";
+                pauseButton.style.display = "none";
+                myVideo.pause();
+        }
+
+        function forwardVideo() {
+            myVideo.currentTime = myVideo.currentTime + 10;
+            myVideo.play();
+        }
+
+        function reverseVideo() {
+            myVideo.currentTime = myVideo.currentTime - 10;
+            myVideo.play();
+        }
+        function stopVideo() {
+            myVideo.currentTime = 0;
+            myVideo.pause();
+            playButton.style.display = "block";
+            pauseButton.style.display = "none";
+        }
+
+    </script>
+</body>
+
+</html>
